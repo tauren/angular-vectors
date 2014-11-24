@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="dist/css/index.css" rel="stylesheet"/>
+</head>
+<body ng-app="App" ng-controller="AppController">
+  <h1>Vectors Examples</h1>
+
+  <vectors width="500" height="300">
+    <vector-definitions>
+      <vector-marker ng-repeat="marker in markers" model="marker">
+      </vector-marker>
+      <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
+        <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"></path>
+      </pattern>
+      <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+        <rect width="80" height="80" fill="url(#smallGrid)"></rect>
+        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"></path>
+      </pattern>
+    </vector-definitions>
+    <vector-group>
+      <rect width="100%" height="100%" fill="url(#grid)"></rect>
+      <vector-bezier ng-repeat="curve in curves" model="curve">
+      </vector-bezier>
+      <!-- <vector-icon model="icon"></vector-icon> -->
+    </vector-group>
+  </vectors>
+
+  <connectors model="connectors">
+    <connector ng-repeat="connector in connectors" model="connector"></connector>
+  </connectors>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.js"></script>
+  <script src="../bower_components/ng-multi-transclude/src/multi-transclude.js"></script>
+
+  <script src="../lib/Vectors/Vectors.js"></script>
+  <script src="../lib/Vectors/factories/calculations.factory.js"></script>
+  <script src="../lib/Vectors/factories/models.factory.js"></script>
+  <script src="../lib/Vectors/factories/paths.factory.js"></script>
+  <script src="../lib/Vectors/directives/vectors.directive.js"></script>
+  <script src="../lib/Vectors/directives/caseSensitive.directive.js"></script>
+  <script src="../lib/Vectors/directives/vectorDefinitions.directive.js"></script>
+  <script src="../lib/Vectors/directives/vectorMarker.directive.js"></script>
+  <script src="../lib/Vectors/directives/vectorGroup.directive.js"></script>
+  <script src="../lib/Vectors/directives/vectorBezier.directive.js"></script>
+  <script src="../lib/Vectors/directives/vectorIcon.directive.js"></script>
+
+  <script src="../lib/Connectors/Connectors.js"></script>
+  <script src="../lib/Connectors/directives/connectors.directive.js"></script>
+  <script src="../lib/Connectors/directives/connector.directive.js"></script>
+
+  <script src="../lib/app.js"></script>
+
+</body>
+</html>
