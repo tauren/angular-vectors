@@ -1,5 +1,7 @@
+'use strict';
+
 describe('Controller: PiechartController', function() {
-   var attrs, ctrl;
+   var ctrl;
    var slice1 = { value: 50 };
    var slice2 = { value: 150 };
 
@@ -81,12 +83,12 @@ describe('Directive: piechartSlice', function() {
 
    it('should create path elements with correct d attributes', function() {
       var html =
-         "<div>" +
-            "<piechart>" +
-               "<piechart-slice value='50'></piechart-slice>" +
-               "<piechart-slice value='150'></piechart-slice>" +
-            "</piechart-slice>" +
-         "</div>";
+         '<div>' +
+            '<piechart>' +
+               '<piechart-slice value="50"></piechart-slice>' +
+               '<piechart-slice value="150"></piechart-slice>' +
+            '</piechart-slice>' +
+         '</div>';
 
       element = angular.element(html);
       $compile(element)($rootScope);
@@ -101,11 +103,11 @@ describe('Directive: piechartSlice', function() {
 
    describe('combined with ng-repeat', function() {
       var html =
-         "<div>" +
-            "<piechart radius='10'>" +
-               "<piechart-slice ng-repeat='foo in foos' value='{{foo.value}}'></piechart-slice>" +
-            "</piechart>" +
-         "</div>";
+         '<div>' +
+            '<piechart radius="10">' +
+               '<piechart-slice ng-repeat="foo in foos" value="{{foo.value}}"></piechart-slice>' +
+            '</piechart>' +
+         '</div>';
 
       it('should create no path elements initially', function() {
          element = angular.element(html);

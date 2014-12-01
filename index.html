@@ -22,9 +22,32 @@
       <rect width="100%" height="100%" fill="url(#grid)"></rect>
       <vector-bezier ng-repeat="curve in curves" model="curve">
       </vector-bezier>
+      <vector-text set-x="text.x" set-y="text.y"
+        set-font-family="text.font"
+        set-font-size="text.size"
+        set-text="txt"
+        model="text">
+          {{txt}}
+      </text>
       <!-- <vector-icon model="icon"></vector-icon> -->
     </vector-group>
   </vectors>
+
+  <h2>Markers</h2>
+  <div ng-repeat="marker in markers">
+    <label>Type</label>
+    <input type="text" ng-model="marker.type"/>
+    <label>Fill</label>
+    <input type="text" ng-model="marker.fill"/>
+  </div>
+  <h2>Curves</h2>
+  <div ng-repeat="curve in curves">
+    <label>Source X</label>
+    <input type="text" ng-model="curve.source.x"/>
+    <label>Source Y</label>
+    <input type="text" ng-model="curve.source.y"/>
+  </div>
+
 
   <connectors model="connectors">
     <connector ng-repeat="connector in connectors" model="connector"></connector>
@@ -44,6 +67,7 @@
   <script src="../lib/Vectors/directives/vectorGroup.directive.js"></script>
   <script src="../lib/Vectors/directives/vectorBezier.directive.js"></script>
   <script src="../lib/Vectors/directives/vectorIcon.directive.js"></script>
+  <script src="../lib/Vectors/directives/vectorText.directive.js"></script>
 
   <script src="../lib/Connectors/Connectors.js"></script>
   <script src="../lib/Connectors/directives/connectors.directive.js"></script>

@@ -1,5 +1,7 @@
+'use strict';
+
 describe('Controller: BezierController', function() {
-   var attrs, ctrl;
+   var ctrl;
    var slice1 = { value: 50 };
    var slice2 = { value: 150 };
 
@@ -81,12 +83,12 @@ describe('Directive: bezierSlice', function() {
 
    it('should create path elements with correct d attributes', function() {
       var html =
-         "<div>" +
-            "<bezier>" +
-               "<bezier-slice value='50'></bezier-slice>" +
-               "<bezier-slice value='150'></bezier-slice>" +
-            "</bezier-slice>" +
-         "</div>";
+         '<div>' +
+            '<bezier>' +
+               '<bezier-slice value="50"></bezier-slice>' +
+               '<bezier-slice value="150"></bezier-slice>' +
+            '</bezier-slice>' +
+         '</div>';
 
       element = angular.element(html);
       $compile(element)($rootScope);
@@ -101,11 +103,11 @@ describe('Directive: bezierSlice', function() {
 
    describe('combined with ng-repeat', function() {
       var html =
-         "<div>" +
-            "<bezier radius='10'>" +
-               "<bezier-slice ng-repeat='foo in foos' value='{{foo.value}}'></bezier-slice>" +
-            "</bezier>" +
-         "</div>";
+         '<div>' +
+            '<bezier radius="10">' +
+               '<bezier-slice ng-repeat="foo in foos" value="{{foo.value}}""></bezier-slice>' +
+            '</bezier>' +
+         '</div>';
 
       it('should create no path elements initially', function() {
          element = angular.element(html);

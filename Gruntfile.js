@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -11,6 +13,27 @@ module.exports = function(grunt) {
 
     clean: {
       dist: ['<%= config.dist %>']
+    },
+
+
+    jshint: {
+      options: {
+        'quotmark'      : 'single',
+        'browser'       : true,
+        'mocha'         : true,
+        'node'          : true,
+        'globals'       : {
+          jsPlumb: true,
+          angular: true,
+          inject: true,
+          expect: true
+        }
+      },
+      all: [
+        'Gruntfile.js',
+        'lib/**/*.js',
+        'test/**/*.js'
+      ]
     },
 
     connect: {
@@ -48,6 +71,10 @@ module.exports = function(grunt) {
           '<%= config.src %>/styles/**/*.{scss,sass}'
         ],
         tasks: ['compass']
+      },
+      lint: {
+        files: '<%= jshint.all %>',
+        tasks: ['jshint']
       }
     },
 
@@ -89,8 +116,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   // Default task(s).
-  grunt.registerTask('default', ['connect:livereload', 'compass', 'watch']);
+  grunt.registerTask('default', ['jshint','connect:livereload', 'compass', 'watch']);
 
 };
