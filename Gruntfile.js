@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     jshint: {
       options: {
         'quotmark'      : 'single',
-        'browser'       : true,
+        // 'browser'       : true,
         'mocha'         : true,
         'node'          : true,
         'globals'       : {
