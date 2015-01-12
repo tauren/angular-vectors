@@ -6,20 +6,13 @@
 <body ng-app="App" ng-controller="AppController">
   <h1>Vectors Examples</h1>
 
-  <vectors width="500" height="300">
+  <vectors width="501" height="301">
     <vector-definitions>
-      <vector-marker ng-repeat="marker in markers" model="marker">
-      </vector-marker>
-      <pattern id="smallGrid" width="8" height="8" patternUnits="userSpaceOnUse">
-        <path d="M 8 0 L 0 0 0 8" fill="none" stroke="gray" stroke-width="0.5"></path>
-      </pattern>
-      <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
-        <rect width="80" height="80" fill="url(#smallGrid)"></rect>
-        <path d="M 80 0 L 0 0 0 80" fill="none" stroke="gray" stroke-width="1"></path>
-      </pattern>
+      <vector-marker ng-repeat="marker in markers" model="marker"></vector-marker>
+      <vector-grids></vector-grids>
     </vector-definitions>
     <vector-group>
-      <rect width="100%" height="100%" fill="url(#grid)"></rect>
+      <rect width="100%" height="100%" fill="url(#vector-grid)"></rect>
       <vector-bezier ng-repeat="curve in curves" model="curve">
       </vector-bezier>
       <vector-text set-x="text.x" set-y="text.y"
@@ -42,12 +35,13 @@
   </div>
   <h2>Curves</h2>
   <div ng-repeat="curve in curves">
-    <label>Source X</label>
-    <input type="text" ng-model="curve.source.x"/>
-    <label>Source Y</label>
+    <label>Source</label>
+    <input type="text" ng-model="curve.source.x"/>,
     <input type="text" ng-model="curve.source.y"/>
+    <label>Destination:</label>
+    <input type="text" ng-model="curve.dest.x"/>,
+    <input type="text" ng-model="curve.dest.y"/>
   </div>
-
 
   <connectors model="connectors">
     <connector ng-repeat="connector in connectors" model="connector"></connector>
@@ -65,6 +59,7 @@
   <script src="../lib/Vectors/directives/vectorDefinitions.directive.js"></script>
   <script src="../lib/Vectors/directives/vectorMarker.directive.js"></script>
   <script src="../lib/Vectors/directives/vectorGroup.directive.js"></script>
+  <script src="../lib/Vectors/directives/vectorGrids.directive.js"></script>
   <script src="../lib/Vectors/directives/vectorBezier.directive.js"></script>
   <script src="../lib/Vectors/directives/vectorIcon.directive.js"></script>
   <script src="../lib/Vectors/directives/vectorText.directive.js"></script>
